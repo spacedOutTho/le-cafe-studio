@@ -1,0 +1,559 @@
+@import "tailwindcss";
+
+/* ─── CSS Varijable ─── */
+:root {
+  --bg: #090909;
+  --surface: #111111;
+  --surface2: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #f0ece4;
+  --text-muted: #8a8580;
+  --accent: #c9a870;
+  --accent-light: #e0c99a;
+  --gap: 6px;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── NAVIGACIJA ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(to bottom, rgba(9,9,9,0.95) 0%, transparent 100%);
+}
+.nav-left, .nav-right {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-right { justify-content: flex-end; }
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+nav a:hover, nav a.active { opacity: 1; }
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--text);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 50px 20px 30px;
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+}
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.footer-social a {
+  opacity: 0.5;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  transition: opacity 0.2s;
+}
+.footer-social a:hover { opacity: 1; }
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 2px;
+  opacity: 0.3;
+  text-transform: uppercase;
+}
+
+/* ─── PORTFOLIO ─── */
+.masonry-grid {
+  columns: 3;
+  column-gap: var(--gap);
+  padding: var(--gap);
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+  overflow: hidden;
+  cursor: pointer;
+}
+.masonry-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease, opacity 0.3s;
+  opacity: 0;
+  filter: brightness(0.92);
+}
+.masonry-item img.loaded { opacity: 1; }
+.masonry-item:hover img {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+
+/* ─── WEDDINGS ─── */
+.weddings-header {
+  text-align: center;
+  padding: 140px 40px 60px;
+}
+.weddings-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 44px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.weddings-header p {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+.weddings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+.wedding-card {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+.wedding-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.75);
+}
+.wedding-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+.wedding-card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 24px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+.wedding-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: white;
+  display: block;
+}
+.wedding-card-year {
+  font-size: 10px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 4px;
+}
+
+/* ─── WEDDING DETAIL ─── */
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 120px 40px 20px;
+  transition: opacity 0.2s;
+  color: var(--text);
+  text-decoration: none;
+}
+.detail-back:hover { opacity: 1; }
+.detail-header {
+  text-align: center;
+  padding: 20px 40px 50px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 60px;
+}
+.detail-couple {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 54px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.detail-year {
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.35;
+  text-transform: uppercase;
+}
+.detail-testimonial {
+  max-width: 740px;
+  margin: 0 auto 60px;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+}
+.detail-testimonial::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  line-height: 0.8;
+  color: var(--accent);
+  opacity: 0.25;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+}
+.detail-testimonial p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.8;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+.detail-testimonial cite {
+  display: block;
+  margin-top: 20px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  font-style: normal;
+}
+.detail-gallery {
+  columns: 3;
+  column-gap: var(--gap);
+  padding: 0 var(--gap) var(--gap);
+}
+.detail-gallery-item {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+  overflow: hidden;
+  cursor: pointer;
+}
+.detail-gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s, opacity 0.3s;
+  opacity: 0;
+}
+.detail-gallery-item img.loaded { opacity: 1; }
+.detail-gallery-item:hover img { transform: scale(1.03); }
+
+/* ─── ABOUT ─── */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 160px 40px 40px;
+  gap: 80px;
+  align-items: center;
+  min-height: 100vh;
+}
+.about-image-frame {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+.about-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--border);
+  z-index: 1;
+  pointer-events: none;
+}
+.about-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.88) contrast(1.05);
+}
+.about-tag {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+.about-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+.about-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+  margin-bottom: 32px;
+}
+.about-bio p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.95;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+.about-langs {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.about-langs-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+.lang-badge {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  opacity: 0.6;
+}
+
+/* ─── CONTACT ─── */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 160px 40px 40px;
+  gap: 80px;
+  align-items: start;
+  min-height: 100vh;
+}
+.contact-info-header {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 50px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.contact-info-sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0.35;
+  text-transform: uppercase;
+  margin-bottom: 56px;
+}
+.contact-item {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.contact-item-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 8px;
+}
+.contact-item-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  opacity: 0.85;
+  text-decoration: none;
+  color: var(--text);
+  transition: opacity 0.2s;
+}
+.contact-item-value:hover { opacity: 1; }
+.form-group { margin-bottom: 28px; }
+.form-group label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 10px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+.form-group textarea { resize: none; min-height: 100px; }
+.btn-submit {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-submit:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 30px;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  color: white;
+}
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  color: white;
+  padding: 20px;
+  user-select: none;
+}
+.lightbox-nav:hover { opacity: 0.9; }
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lightbox-counter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: 0.3;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .masonry-grid { columns: 2; }
+  .detail-gallery { columns: 2; }
+  .weddings-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-wrap { grid-template-columns: 1fr; max-width: 600px; gap: 40px; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 50px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-left, .nav-right { display: none; }
+  .burger { display: flex; }
+  .nav-logo { font-size: 18px; letter-spacing: 4px; }
+  .masonry-grid { columns: 2; }
+  .weddings-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-wrap { padding: 120px 20px 40px; }
+  .contact-wrap { padding: 120px 20px 40px; }
+}
+@media (max-width: 480px) {
+  .masonry-grid { columns: 1; }
+  .detail-gallery { columns: 1; }
+  .weddings-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── ANIMACIJE ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
+.fade-up-delay-1 { animation-delay: 0.1s; }
+.fade-up-delay-2 { animation-delay: 0.2s; }
+.fade-up-delay-3 { animation-delay: 0.3s; }
