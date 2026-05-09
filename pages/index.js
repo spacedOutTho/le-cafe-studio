@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import Head from 'next/head'
+import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import Lightbox from '../components/Lightbox'
 
@@ -25,6 +26,17 @@ export default function Portfolio({ images }) {
 
   return (
     <>
+      <Head>
+        <title>Le Café Studio — Wedding Photography Croatia</title>
+        <meta name="description" content="Davorin Vranić is a wedding photographer based in Croatia, capturing authentic moments across Croatia and Europe. Candid, elegant, emotional." />
+        <meta property="og:title" content="Le Café Studio — Wedding Photography Croatia" />
+        <meta property="og:description" content="Davorin Vranić — wedding photographer based in Croatia, available across Europe." />
+        <meta property="og:url" content="https://le-cafe-studio.com" />
+        <meta property="og:image" content="https://le-cafe-studio.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://le-cafe-studio.com" />
+      </Head>
+
       <div className="masonry-grid">
         {images.map((img, i) => (
           <div key={img.id} className="masonry-item" onClick={() => openLightbox(i)}>

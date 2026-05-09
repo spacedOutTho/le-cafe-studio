@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import { supabase } from '../lib/supabase'
 
@@ -16,6 +17,15 @@ export async function getStaticProps() {
 export default function Weddings({ weddings }) {
   return (
     <>
+      <Head>
+        <title>Weddings — Le Café Studio</title>
+        <meta name="description" content="Wedding stories captured by Davorin Vranić — Le Café Studio. Browse galleries from weddings across Croatia and Europe." />
+        <meta property="og:title" content="Weddings — Le Café Studio" />
+        <meta property="og:description" content="Wedding stories captured by Davorin Vranić across Croatia and Europe." />
+        <meta property="og:url" content="https://le-cafe-studio.com/weddings" />
+        <link rel="canonical" href="https://le-cafe-studio.com/weddings" />
+      </Head>
+
       <div className="weddings-header">
         <h1>Weddings</h1>
         <p>Stories worth remembering</p>

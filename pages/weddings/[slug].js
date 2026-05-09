@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
@@ -39,8 +40,24 @@ export default function WeddingDetail({ wedding, images }) {
   const [lbOpen, setLbOpen] = useState(false)
   const [lbIndex, setLbIndex] = useState(0)
 
+  const pageTitle = `${wedding.couple_name} ${wedding.year ? `· ${wedding.year}` : ''} — Le Café Studio`
+  const pageDesc = wedding.testimonial
+    ? `${wedding.testimonial.slice(0, 120)}…`
+    : `Wedding of ${wedding.couple_name} — photographed by Davorin Vranić, Le Café Studio.`
+  const ogImage = images[0]?.url || wedding.cover_image
+
   return (
     <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:url" content={`https://le-cafe-studio.com/weddings/${wedding.slug}`} />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <link rel="canonical" href={`https://le-cafe-studio.com/weddings/${wedding.slug}`} />
+      </Head>
+
       <Link href="/weddings" className="detail-back">← Back to Weddings</Link>
 
       <div className="detail-header">
