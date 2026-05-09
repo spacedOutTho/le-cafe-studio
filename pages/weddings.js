@@ -26,9 +26,14 @@ export default function Weddings({ weddings }) {
         <link rel="canonical" href="https://le-cafe-studio.com/weddings" />
       </Head>
 
-      <div className="weddings-header">
-        <h1>Weddings</h1>
-        <p>Stories worth remembering</p>
+      <div className="weddings-hero">
+        <div className="weddings-hero-bg"></div>
+        <div className="weddings-hero-content">
+          <p className="weddings-hero-tag">Stories worth remembering</p>
+          <h1 className="weddings-hero-title">Weddings</h1>
+          <div className="weddings-hero-divider"></div>
+          <p className="weddings-hero-sub">Croatia &amp; Europe</p>
+        </div>
       </div>
       <div className="weddings-grid">
         {weddings.map(w => (
@@ -37,6 +42,7 @@ export default function Weddings({ weddings }) {
             <div className="wedding-card-info">
               <span className="wedding-card-name">{w.couple_name}</span>
               <div className="wedding-card-year">{w.year}</div>
+              <span className="wedding-card-line"></span>
             </div>
           </Link>
         ))}

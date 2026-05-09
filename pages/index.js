@@ -37,6 +37,12 @@ export default function Portfolio({ images }) {
         <link rel="canonical" href="https://le-cafe-studio.com" />
       </Head>
 
+      <div className="portfolio-hero">
+        <p className="portfolio-hero-tag">Wedding Photography</p>
+        <h1 className="portfolio-hero-title">Le Café Studio</h1>
+        <p className="portfolio-hero-sub">Croatia &amp; Europe</p>
+      </div>
+
       <div className="masonry-grid">
         {images.map((img, i) => (
           <div key={img.id} className="masonry-item" onClick={() => openLightbox(i)}>

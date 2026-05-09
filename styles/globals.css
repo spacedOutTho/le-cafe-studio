@@ -114,6 +114,48 @@ footer {
   text-transform: uppercase;
 }
 
+/* ─── HOMEPAGE HERO ─── */
+.portfolio-hero {
+  text-align: center;
+  padding: 140px 40px 60px;
+  position: relative;
+}
+.portfolio-hero::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin: 40px auto 0;
+  opacity: 0.4;
+}
+.portfolio-hero-tag {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease both;
+}
+.portfolio-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+.portfolio-hero-sub {
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.35;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
 /* ─── PORTFOLIO ─── */
 .masonry-grid {
   columns: 3;
@@ -141,23 +183,66 @@ footer {
 }
 
 /* ─── WEDDINGS ─── */
-.weddings-header {
-  text-align: center;
-  padding: 140px 40px 60px;
+.weddings-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 60px;
 }
-.weddings-header h1 {
+.weddings-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0d0a 0%, #1a1410 50%, #0a0908 100%);
+}
+.weddings-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(201,168,112,0.06) 0%, transparent 70%);
+}
+.weddings-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 40px;
+}
+.weddings-hero-tag {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease both;
+}
+.weddings-hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 44px;
-  letter-spacing: 8px;
+  font-size: 72px;
+  letter-spacing: 12px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  line-height: 1;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.1s both;
 }
-.weddings-header p {
-  font-size: 12px;
-  letter-spacing: 3px;
-  opacity: 0.4;
+.weddings-hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.3;
+  margin: 0 auto 20px;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.weddings-hero-sub {
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.35;
   text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.3s both;
 }
 .weddings-grid {
   display: grid;
@@ -165,7 +250,7 @@ footer {
   gap: var(--gap);
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--gap);
+  padding: 0 var(--gap) var(--gap);
 }
 .wedding-card {
   position: relative;
@@ -179,22 +264,27 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
-  filter: brightness(0.75);
+  transition: transform 0.7s ease, filter 0.4s ease;
+  filter: brightness(0.75) saturate(0.9);
 }
 .wedding-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(0.85);
+  transform: scale(1.06);
+  filter: brightness(0.88) saturate(1);
 }
 .wedding-card-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 40px 24px 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  padding: 60px 24px 28px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  transform: translateY(4px);
+  transition: transform 0.4s ease;
+}
+.wedding-card:hover .wedding-card-info {
+  transform: translateY(0);
 }
 .wedding-card-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 300;
   letter-spacing: 3px;
   color: white;
@@ -203,10 +293,22 @@ footer {
 .wedding-card-year {
   font-size: 10px;
   letter-spacing: 3px;
-  opacity: 0.6;
+  opacity: 0.5;
   text-transform: uppercase;
   color: white;
-  margin-top: 4px;
+  margin-top: 6px;
+}
+.wedding-card-line {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 10px;
+  transition: width 0.4s ease;
+  opacity: 0.7;
+}
+.wedding-card:hover .wedding-card-line {
+  width: 30px;
 }
 
 /* ─── WEDDING DETAIL ─── */
@@ -230,6 +332,7 @@ footer {
   padding: 20px 40px 50px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 60px;
+  animation: fadeUp 0.8s ease both;
 }
 .detail-couple {
   font-family: 'Cormorant Garamond', serif;
@@ -251,6 +354,7 @@ footer {
   padding: 0 40px;
   text-align: center;
   position: relative;
+  animation: fadeUp 0.8s ease 0.15s both;
 }
 .detail-testimonial::before {
   content: '"';
@@ -317,6 +421,7 @@ footer {
   position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
+  animation: fadeUp 1s ease both;
 }
 .about-image-frame::before {
   content: '';
@@ -339,6 +444,7 @@ footer {
   color: var(--accent);
   margin-bottom: 24px;
   opacity: 0.8;
+  animation: fadeUp 0.8s ease 0.1s both;
 }
 .about-name {
   font-family: 'Cormorant Garamond', serif;
@@ -347,6 +453,7 @@ footer {
   letter-spacing: 4px;
   line-height: 1.1;
   margin-bottom: 36px;
+  animation: fadeUp 0.8s ease 0.2s both;
 }
 .about-divider {
   width: 40px;
@@ -354,6 +461,7 @@ footer {
   background: var(--accent);
   opacity: 0.4;
   margin-bottom: 32px;
+  animation: fadeUp 0.8s ease 0.3s both;
 }
 .about-bio p {
   font-family: 'Cormorant Garamond', serif;
@@ -362,12 +470,14 @@ footer {
   line-height: 1.95;
   opacity: 0.75;
   margin-bottom: 20px;
+  animation: fadeUp 0.8s ease 0.35s both;
 }
 .about-langs {
   margin-top: 40px;
   display: flex;
   gap: 20px;
   align-items: center;
+  animation: fadeUp 0.8s ease 0.4s both;
 }
 .about-langs-label {
   font-size: 9px;
@@ -394,6 +504,12 @@ footer {
   gap: 80px;
   align-items: start;
   min-height: 100vh;
+}
+.contact-info {
+  animation: fadeUp 0.8s ease both;
+}
+.contact-form {
+  animation: fadeUp 0.8s ease 0.15s both;
 }
 .contact-info-header {
   font-family: 'Cormorant Garamond', serif;
@@ -478,7 +594,7 @@ footer {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.96);
   z-index: 1000;
   align-items: center;
   justify-content: center;
@@ -541,19 +657,23 @@ footer {
   .weddings-grid { grid-template-columns: repeat(2, 1fr); }
   .about-wrap { padding: 120px 20px 40px; }
   .contact-wrap { padding: 120px 20px 40px; }
+  .portfolio-hero-title { font-size: 42px; letter-spacing: 6px; }
+  .weddings-hero-title { font-size: 48px; letter-spacing: 8px; }
 }
 @media (max-width: 480px) {
   .masonry-grid { columns: 1; }
   .detail-gallery { columns: 1; }
   .weddings-grid { grid-template-columns: 1fr; }
+  .portfolio-hero-title { font-size: 32px; }
+  .weddings-hero-title { font-size: 36px; }
 }
 
 /* ─── ANIMACIJE ─── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade-up { animation: fadeUp 0.6s ease both; }
+.fade-up { animation: fadeUp 0.7s ease both; }
 .fade-up-delay-1 { animation-delay: 0.1s; }
 .fade-up-delay-2 { animation-delay: 0.2s; }
 .fade-up-delay-3 { animation-delay: 0.3s; }
