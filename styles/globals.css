@@ -916,3 +916,138 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ─── ABOUT — stats + philosophy ─── */
+.about-hero {
+  text-align: center;
+  padding: 140px 40px 0;
+}
+.about-hero-tag {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+.about-hero-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  color: var(--text);
+  margin-bottom: 28px;
+  line-height: 1;
+}
+.about-hero-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+.about-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 80px auto 0;
+  padding: 48px 40px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 32px;
+}
+.about-stat-number {
+  display: block;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.about-stat-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  color: var(--text);
+}
+.about-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.about-philosophy {
+  max-width: 700px;
+  margin: 80px auto 100px;
+  padding: 0 40px;
+  text-align: center;
+}
+.about-philosophy-quote {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+.about-philosophy-attr {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.35;
+  color: var(--text);
+}
+
+/* ─── WEDDING CARD — photo count badge ─── */
+.wedding-card-count {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: var(--font-raleway), 'Raleway', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+  background: rgba(0,0,0,0.35);
+  padding: 5px 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  backdrop-filter: blur(4px);
+}
+.wedding-card:hover .wedding-card-count {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── ABOUT responsive ─── */
+@media (max-width: 768px) {
+  .about-hero { padding: 120px 24px 0; }
+  .about-hero-title { font-size: 48px; }
+  .about-stats {
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 36px 24px;
+  }
+  .about-stat { flex: 0 0 calc(50% - 16px); }
+  .about-stat-divider { display: none; }
+  .about-philosophy { margin: 60px auto 80px; }
+  .about-philosophy-quote { font-size: 21px; }
+}
+@media (max-width: 480px) {
+  .about-hero-title { font-size: 38px; }
+  .about-stat-number { font-size: 42px; }
+}
