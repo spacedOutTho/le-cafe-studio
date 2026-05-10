@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import PageTransition from '../components/PageTransition'
+import InquireButton from '../components/InquireButton'
 import '../styles/globals.css'
 import { Cormorant_Garamond, Raleway } from 'next/font/google'
 import { useState, useEffect } from 'react'
@@ -97,6 +99,8 @@ export default function App({ Component, pageProps }) {
         />
       )}
 
+      <PageTransition />
+      <InquireButton />
       <Nav />
       <Component {...pageProps} />
       <Footer />
