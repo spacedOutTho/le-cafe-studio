@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useTheme } from '../lib/theme'
 
 export default function Nav() {
   const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
-  if (router.pathname === '/admin') return null  // ← dodaj ovaj red
+  if (router.pathname === '/admin') return null
 
   return (
     <>
@@ -21,6 +23,16 @@ export default function Nav() {
         <div className="nav-right">
           <Link href="/about" className={router.pathname === '/about' ? 'active' : ''}>About me</Link>
           <Link href="/contact" className={router.pathname === '/contact' ? 'active' : ''}>Contact</Link>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            <span className="theme-toggle-icon">
+              {theme === 'dark' ? '○' : '●'}
+            </span>
+          </button>
         </div>
 
         <div className="burger" onClick={() => setMenuOpen(true)}>
@@ -29,19 +41,22 @@ export default function Nav() {
       </nav>
 
       {menuOpen && (
-        <div style={{
-          position: 'fixed', inset: 0, background: 'rgba(9,9,9,0.97)',
-          zIndex: 200, display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center', gap: '40px'
-        }}>
-          <span onClick={() => setMenuOpen(false)} style={{
-            position: 'absolute', top: '24px', right: '40px',
-            fontSize: '28px', cursor: 'pointer', opacity: 0.6, color: 'white'
-          }}>✕</span>
-          <Link href="/" onClick={() => setMenuOpen(false)} style={{fontSize:'14px', letterSpacing:'5px', textTransform:'uppercase', color:'white', textDecoration:'none'}}>Portfolio</Link>
-          <Link href="/weddings" onClick={() => setMenuOpen(false)} style={{fontSize:'14px', letterSpacing:'5px', textTransform:'uppercase', color:'white', textDecoration:'none'}}>Weddings</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)} style={{fontSize:'14px', letterSpacing:'5px', textTransform:'uppercase', color:'white', textDecoration:'none'}}>About me</Link>
-          <Link href="/contact" onClick={() => setMenuOpen(false)} style={{fontSize:'14px', letterSpacing:'5px', textTransform:'uppercase', color:'white', textDecoration:'none'}}>Contact</Link>
+        <div className="mobile-menu">
+          <button
+            className="mobile-menu-close"
+            onClick={() => setMenuOpen(false)}
+          >✕</button>
+
+          <div className="mobile-menu-links">
+            <Link href="/" onClick={() => setMenuOpen(false)}>Portfolio</Link>
+            <Link href="/weddings" onClick={() => setMenuOpen(false)}>Weddings</Link>
+            <Link href="/about" onClick={() => setMenuOpen(false)}>About me</Link>
+            <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          </div>
+
+          <button className="mobile-menu-theme" onClick={toggleTheme}>
+            {theme === 'dark' ? '○ Light mode' : '● Dark mode'}
+          </button>
         </div>
       )}
     </>
