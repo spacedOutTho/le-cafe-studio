@@ -51,6 +51,7 @@ export default function Portfolio({ images }) {
               alt=""
               loading="lazy"
               onLoad={e => e.target.classList.add('loaded')}
+              ref={el => { if (el?.complete) el.classList.add('loaded') }}
             />
           </div>
         ))}
