@@ -27,7 +27,6 @@ export default function Weddings({ weddings }) {
       </Head>
 
       <div className="weddings-hero">
-        <div className="weddings-hero-bg"></div>
         <div className="weddings-hero-content">
           <p className="weddings-hero-tag">Stories worth remembering</p>
           <h1 className="weddings-hero-title">Weddings</h1>
@@ -35,9 +34,15 @@ export default function Weddings({ weddings }) {
           <p className="weddings-hero-sub">Croatia &amp; Europe</p>
         </div>
       </div>
+
       <div className="weddings-grid">
-        {weddings.map(w => (
-          <Link key={w.id} href={`/weddings/${w.slug}`} className="wedding-card">
+        {weddings.map((w, i) => (
+          <Link
+            key={w.id}
+            href={`/weddings/${w.slug}`}
+            className="wedding-card sr"
+            style={{ '--delay': `${(i % 3) * 0.1}s` }}
+          >
             <img src={w.cover_image} alt={w.couple_name} loading="lazy" />
             <div className="wedding-card-info">
               <span className="wedding-card-name">{w.couple_name}</span>

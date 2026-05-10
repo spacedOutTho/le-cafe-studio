@@ -6,6 +6,7 @@ import InquireButton from '../components/InquireButton'
 import '../styles/globals.css'
 import { Cormorant_Garamond, Raleway } from 'next/font/google'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Lenis from 'lenis'
 
 const cormorant = Cormorant_Garamond({
@@ -22,6 +23,7 @@ const raleway = Raleway({
 })
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter()
   const [preloaderHiding, setPreloaderHiding] = useState(false)
   const [preloaderGone, setPreloaderGone] = useState(false)
   const [cursor, setCursor] = useState({ x: -200, y: -200, hovering: false })
@@ -68,6 +70,31 @@ export default function App({ Component, pageProps }) {
     window.addEventListener('mousemove', onMove)
     return () => window.removeEventListener('mousemove', onMove)
   }, [isMobile])
+
+  // Scroll reveal — re-run on every page change
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    )
+
+    // Small delay so DOM is painted after page transition
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.sr').forEach(el => observer.observe(el))
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
+  }, [router.asPath])
 
   return (
     <div className={`${cormorant.variable} ${raleway.variable}`}>

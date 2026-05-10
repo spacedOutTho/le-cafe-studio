@@ -60,13 +60,13 @@ export default function WeddingDetail({ wedding, images }) {
 
       <Link href="/weddings" className="detail-back">← Back to Weddings</Link>
 
-      <div className="detail-header">
+      <div className="detail-header sr">
         <div className="detail-couple">{wedding.couple_name}</div>
         <div className="detail-year">{wedding.year}</div>
       </div>
 
       {wedding.testimonial && (
-        <div className="detail-testimonial">
+        <div className="detail-testimonial sr" style={{ '--delay': '0.15s' }}>
           <p>{wedding.testimonial}</p>
           <cite>— {wedding.couple_name}</cite>
         </div>
@@ -76,7 +76,8 @@ export default function WeddingDetail({ wedding, images }) {
         {images.map((img, i) => (
           <div
             key={img.id}
-            className="detail-gallery-item"
+            className="detail-gallery-item sr"
+            style={{ '--delay': `${(i % 3) * 0.1}s` }}
             onClick={() => { setLbIndex(i); setLbOpen(true) }}
           >
             <img

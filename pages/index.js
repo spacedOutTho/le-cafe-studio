@@ -33,7 +33,6 @@ export default function Portfolio({ images }) {
         <meta property="og:description" content="Davorin Vranić — wedding photographer based in Croatia, available across Europe." />
         <meta property="og:url" content="https://le-cafe-studio.com" />
         <meta property="og:image" content="https://le-cafe-studio.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://le-cafe-studio.com" />
       </Head>
 
@@ -45,7 +44,12 @@ export default function Portfolio({ images }) {
 
       <div className="masonry-grid">
         {images.map((img, i) => (
-          <div key={img.id} className="masonry-item" onClick={() => openLightbox(i)}>
+          <div
+            key={img.id}
+            className="masonry-item sr"
+            style={{ '--delay': `${(i % 3) * 0.1}s` }}
+            onClick={() => openLightbox(i)}
+          >
             <img
               src={img.url}
               alt=""

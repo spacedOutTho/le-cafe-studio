@@ -846,10 +846,10 @@ footer {
   transform-origin: bottom;
 }
 .page-transition--leaving {
-  animation: curtainClose 0.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: curtainClose 0.28s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 .page-transition--entering {
-  animation: curtainOpen 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: curtainOpen 0.38s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 @keyframes curtainClose {
   from { transform: scaleY(0); transform-origin: bottom; }
@@ -903,4 +903,16 @@ footer {
     right: 20px;
     padding: 11px 22px;
   }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.sr {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition-delay: var(--delay, 0s);
+}
+.sr.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
